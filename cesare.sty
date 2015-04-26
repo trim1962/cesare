@@ -1,9 +1,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{cesare}[2015/04/26 v1.0]
-\RequirePackage[first=1, last=395,counter=die]{lcg}
+\RequirePackage[first=1, last=1320,counter=die]{lcg}
 \RequirePackage{datatool}
 \DTLsetseparator{;} 
-\DTLloaddb{myDB}{elenco2.csv}
+\DTLloaddb{myDB}{citazioni.csv}
 \newcommand{\cesare}[1]{%
 	\ifthenelse{#1<\DTLrowcount{myDB}}{%
 		\dtlgetrow{myDB}{#1}%

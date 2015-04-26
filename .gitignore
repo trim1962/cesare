@@ -4,3 +4,5 @@
 *.fls
 *.pdf
 *.gz
+*.aux
+*.log
