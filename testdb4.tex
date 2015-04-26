@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage[first=1, last=395,counter=die]{lcg}
+\usepackage[utf8]{inputenc}
+\usepackage{datatool}
+\DTLsetseparator{;} 
+\DTLloaddb{myDB}{elenco2.csv}
+\newcommand{\cesare}[1]{%
+	\ifthenelse{#1<\DTLrowcount{myDB}}{%
+	    \dtlgetrow{myDB}{#1}%
+		\dtlgetentryfromcurrentrow{\citazione}{2}%
+	    	\citazione
+	}{}%
+}%
+%
+\newcommand{\oracolo}{\rand
+\cesare{\value{die}}}
+
+\begin{document}
+    
+  come disse   \cesare{14} faremo
+
+ \oracolo
+  
+   \oracolo
+\end{document}
