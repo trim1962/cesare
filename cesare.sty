@@ -2,15 +2,13 @@
 \ProvidesPackage{cesare}[2015/04/26 v1.0]
 \RequirePackage[first=1, last=1320,counter=die]{lcg}
 \RequirePackage{datatool}
-\DTLsetseparator{;} 
-\DTLloaddb{myDB}{citazioni.csv}
+\DTLloaddbtex{\myDB}{citazioni.dbtex}
 \newcommand{\cesare}[1]{%
-	\ifthenelse{#1<\DTLrowcount{myDB}}{%
-		\dtlgetrow{myDB}{#1}%
+	\ifthenelse{#1<\DTLrowcount{\myDB}}{%
+		\dtlgetrow{\myDB}{#1}%
 		\dtlgetentryfromcurrentrow{\citazione}{2}%
 		\citazione
-	}{}%
+	}{\PackageError{cesare}{Number `#1' not define}{Max value \DTLrowcount{\myDB}}}%
 }%
 %
-\newcommand{\oracolo}{\rand
-	\cesare{\value{die}}}
+\newcommand{\oracolo}{\rand\cesare{\value{die}}}

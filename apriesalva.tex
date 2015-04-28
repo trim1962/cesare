@@ -1,0 +1,13 @@
+\documentclass{article}
+\usepackage[first=1, last=395,counter=die]{lcg}
+\usepackage[utf8]{inputenc}
+\usepackage{datatool}
+%\DTLsetseparator{;} 
+
+
+\begin{document}
+\DTLloaddb{myDB}{elenco2.csv}   
+\DTLsavedb{myDB}{scores.txt}
+\DTLprotectedsaverawdb{\myDB}{data-raw-psaved.dbtex}
+
+\end{document}
